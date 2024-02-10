@@ -8,11 +8,17 @@ Program ini adalah solver untuk minigame Breach Protocol di game Cyberpunk 2077.
 
 1. Pastikan Go sudah terinstall di komputer Anda. Jika belum, Anda dapat mengunduhnya [di sini](https://golang.org/dl/).
 2. Clone repository ini dengan menjalankan perintah
-   `git clone https://github.com/username/repo.git`
-3. Masuk ke dalam folder `bin` dengan menjalankan perintah
-   `cd bin`
-4. Jalankan perintah
-   `./Tucil1_13522032`
+   ```
+   git clone https://github.com/TazakiN/Tucil1_13522032.git
+   ```
+4. Masuk ke dalam folder `bin` dengan menjalankan perintah
+   ```
+   cd bin
+   ```
+6. Jalankan perintah untuk memulai program
+   ```
+   ./Tucil1_13522032
+   ```
 
 ## Penggunaan
 
