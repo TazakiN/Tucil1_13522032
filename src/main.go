@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -23,6 +22,7 @@ var (
 	bufferTemp            []coor
 	bufferTempReward      int
 	stopper               int
+	elapsedTime           time.Duration
 )
 
 func main() {
@@ -51,24 +51,6 @@ func main() {
 		}
 	}
 
-	elapsedTime := time.Since(startTime)
-
-	// tampilkan hasil
-	if bufferTertinggiReward != 0 {
-		fmt.Print("\033[35m\nReward Tertinggi: \033[0m")
-		fmt.Println(bufferTertinggiReward)
-		fmt.Print("\033[35mToken Buffer Terbaik: \033[0m")
-		for i := 0; i < len(bufferTertinggi); i++ {
-			fmt.Print(mat[bufferTertinggi[i].X][bufferTertinggi[i].Y], " ")
-		}
-		fmt.Println("\033[35\nmBuffer Terbaik: \033[0m")
-		for i := 0; i < len(bufferTertinggi); i++ {
-			fmt.Printf("%d, %d\n", bufferTertinggi[i].X+1, bufferTertinggi[i].Y+1)
-		}
-
-	} else {
-		fmt.Println("\033[31mTidak ada buffer yang valid\033[0m")
-	}
-	fmt.Print("\033[35mWaktu eksekusi: \033[0m")
-	fmt.Println(elapsedTime)
+	elapsedTime = time.Since(startTime)
+	displayHasil(elapsedTime)
 }
