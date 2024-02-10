@@ -20,27 +20,29 @@ func readFile(input string) {
 
 	scanner := bufio.NewScanner(f)
 
-	// line pertama adalah bufferSize
+	// baca bufferSize
 	scanner.Scan()
 	bufferSize, _ = strconv.Atoi(scanner.Text())
 
-	// line kedua adalah matrixSize, misal '6 6' (6 baris, 6 kolom), buat menjadi 2 variabel
+	// baca matrixWidth dan matrixHeight
 	scanner.Scan()
 	matrixWidth, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[0])
 	matrixHeight, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[1])
 
-	// line selanjutnya adalah matrix, lakukan proses pembacaan dan simpan dalam variabel mat
+	// baca matrix
 	for i := 0; i < matrixHeight; i++ {
 		scanner.Scan()
 		row := strings.Split(scanner.Text(), " ")
 		mat = append(mat, row)
 	}
 
+	// baca banyakSeq, seqs, dan rewardSeqs
 	scanner.Scan()
 	banyakSeq, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[0])
 	seqs = make([][]string, banyakSeq)
 	rewardSeqs = make([]int, banyakSeq)
 
+	// baca sekuens dan reward sekuens
 	for i := 0; i < banyakSeq; i++ {
 		scanner.Scan()
 		seqs[i] = strings.Split(scanner.Text(), " ")
@@ -131,7 +133,7 @@ func printAsciiArt() {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println(line)
+		fmt.Println("\033[33m" + line + "\033[0m")
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -142,7 +144,6 @@ func printAsciiArt() {
 func mainInput() {
 
 	printAsciiArt()
-
 	// tanya kepada user apakah ingin menggunakan file input.txt atau tidak
 	fmt.Println("\033[34mApakah anda ingin menggunakan file input.txt? (y/n)\033[0m")
 	var input string

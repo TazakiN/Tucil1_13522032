@@ -32,7 +32,7 @@ func nextBufferTemp(bufferTemp []coor) []coor {
 		}
 	}
 
-	// jika bufferTemp tidak valid, generate bufferTemp selanjutnya
+	// jika sudah valid, generate bufferTemp selanjutnya
 	for i := len(bufferTemp) - 1; i >= 0; i-- {
 		if i%2 == 1 { // jika i ganjil, maka bufferTemp[i] adalah horizontal
 			bufferTemp[i] = nextCoor(bufferTemp[i], true)
