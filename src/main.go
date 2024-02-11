@@ -36,7 +36,7 @@ func main() {
 	bufferTempReward = 0
 
 	startTime := time.Now()
-	for stopper != 2 {
+	for stopper != 1 {
 		// cek apakah bufferTemp valid
 		if isUnique(bufferTemp) && isValid(bufferTemp) {
 			bufferTempReward = hitungReward(bufferTemp)

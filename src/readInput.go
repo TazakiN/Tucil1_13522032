@@ -98,7 +98,7 @@ func readManualInput() {
 		for j := 0; j < seqLength; j++ {
 			seqs[i][j] = tokens[rand.Intn(banyakTokenUnik)]
 		}
-		rewardSeqs[i] = rand.Intn(100)
+		rewardSeqs[i] = rand.Intn(99) + 1
 	}
 
 	// cetak matrix ke layar
