@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -26,6 +27,7 @@ var (
 )
 
 func main() {
+	printAsciiArt()
 	mainInput()
 
 	// inisisasi variabel
@@ -53,4 +55,16 @@ func main() {
 
 	elapsedTime = time.Since(startTime)
 	displayHasil(elapsedTime)
+
+	// tanyakan apakah ingin mengulang
+	var input string
+	for input != "y" && input != "n" {
+		println("\033[34mApakah anda ingin melakukan kalkulasi baru? (y/n)\033[0m")
+		_, _ = fmt.Scanln(&input)
+	}
+	if input == "y" {
+		main()
+	} else {
+		fmt.Println("\033[31mKeluar dari program...\033[0m")
+	}
 }
