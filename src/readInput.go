@@ -152,19 +152,23 @@ func printAsciiArt() {
 
 func mainInput() {
 	// tanya kepada user apakah ingin menggunakan file input.txt atau tidak
-	fmt.Println("\033[34mApakah anda ingin menggunakan file input.txt? (y/n)\033[0m")
+	fmt.Println("\033[34mApakah anda ingin menggunakan file input (.txt)? (y/n)\033[0m")
 	var input string
 	fmt.Scanln(&input)
 	if input == "y" {
 		// minta user untuk memasukkan nama file .txt
-		fmt.Println("\033[34mMasukkan nama file .txt (tanpa .txt)\033[0m")
+		fmt.Println("\033[33mberalih ke penggunaan input file...\033[0m")
+		fmt.Println("\033[34m\npastikan file yang akan dibaca berada di folder test\033[0m")
+		fmt.Print("\033[34mMasukkan nama file .txt (tanpa .txt): \033[0m")
 		fmt.Scanln(&input)
 		// validasi keberadaan file
 		_, err := os.Stat("../test/" + input + ".txt")
 		if err != nil {
 			if os.IsNotExist(err) {
+				// pembacaan gagal, keluar dari program
 				fmt.Println("\033[31mFile tidak ditemukan\033[0m")
-				mainInput()
+				fmt.Println("\033[31mKeluar dari program...\033[0m")
+				os.Exit(1)
 			}
 		}
 		fmt.Println("\033[33mMembaca file...\033[0m")
