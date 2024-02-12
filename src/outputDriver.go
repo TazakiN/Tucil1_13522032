@@ -16,7 +16,7 @@ func displayHasil(elapsedTime time.Duration) {
 		fmt.Println(bufferTertinggiReward)
 		fmt.Print("\033[35mToken Buffer Terbaik: \033[0m")
 		for i := 0; i < len(bufferTertinggi); i++ {
-			fmt.Print(mat[bufferTertinggi[i].X][bufferTertinggi[i].Y], " ")
+			fmt.Print(mat[bufferTertinggi[i].Y][bufferTertinggi[i].X], " ")
 		}
 		fmt.Println("\033[35\nmBuffer Terbaik: \033[0m")
 		for i := 0; i < len(bufferTertinggi); i++ {
