@@ -19,13 +19,13 @@ func displayHasil(elapsedTime time.Duration) {
 		}
 		fmt.Println("\033[35\nmBuffer Terbaik: \033[0m")
 		for i := 0; i < len(bufferTertinggi); i++ {
-			fmt.Printf("%d, %d\n", bufferTertinggi[i].X+1, bufferTertinggi[i].Y+1)
+			fmt.Printf("%d, %d\n", bufferTertinggi[i].Y+1, bufferTertinggi[i].X+1)
 		}
 
 	} else {
-		fmt.Println("\033[31mTidak ada buffer yang valid\033[0m")
+		fmt.Println("\033[31mTidak ada buffer yang valid\n\033[0m")
 	}
-	fmt.Print("\033[35mWaktu eksekusi: \033[0m")
+	fmt.Print("\033[35mWaktu eksekusi: \n\033[0m")
 	fmt.Println(elapsedTime)
 
 	// tawarkan untuk menyimpan hasil ke file txt
@@ -65,7 +65,7 @@ func saveToFile() {
 	}
 	file.WriteString("\nBuffer Terbaik: \n")
 	for i := 0; i < len(bufferTertinggi); i++ {
-		file.WriteString(strconv.Itoa(bufferTertinggi[i].X+1) + ", " + strconv.Itoa(bufferTertinggi[i].Y+1) + "\n")
+		file.WriteString(strconv.Itoa(bufferTertinggi[i].Y+1) + ", " + strconv.Itoa(bufferTertinggi[i].X+1) + "\n")
 	}
 	file.WriteString("Waktu eksekusi: " + elapsedTime.String())
 	fmt.Println("\033[33mMenyimpan file...\033[0m")
