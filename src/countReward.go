@@ -5,9 +5,9 @@ func hitungReward(bufferTemp []coor) int {
 	for i := 0; i < len(bufferTemp); i++ {
 		// hitung reward dari bufferTemp
 		for j := 0; j < len(seqs); j++ {
-			if mat[bufferTemp[i].X][bufferTemp[i].Y] == seqs[j][0] {
+			if mat[bufferTemp[i].Y][bufferTemp[i].X] == seqs[j][0] {
 				// jika huruf pertama cocok, cek apakah sisa huruf juga cocok
-				if cekSeq(i, j) == 1 {
+				if cekSeq(i, j) {
 					reward += rewardSeqs[j]
 				}
 			}
@@ -16,17 +16,17 @@ func hitungReward(bufferTemp []coor) int {
 	return reward
 }
 
-func cekSeq(buffPos int, seqIdx int) int {
+func cekSeq(buffPos int, seqIdx int) bool {
 	seqPos := 1
 	// cek apakah sisa huruf juga cocok
 	for i := buffPos + 1; i < len(bufferTemp); i++ {
-		if mat[bufferTemp[i].X][bufferTemp[i].Y] != seqs[seqIdx][seqPos] {
-			return 0
+		if mat[bufferTemp[i].Y][bufferTemp[i].X] != seqs[seqIdx][seqPos] {
+			return false
 		}
 		seqPos++
 		if seqPos == len(seqs[seqIdx]) {
-			return 1
+			return true
 		}
 	}
-	return 0
+	return false
 }
