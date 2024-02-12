@@ -26,13 +26,18 @@ func readFile(input string) {
 
 	// baca matrixWidth dan matrixHeight
 	scanner.Scan()
-	matrixWidth, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[0])
-	matrixHeight, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[1])
+	matrixHeight, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[0])
+	matrixWidth, _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[1])
 
 	// baca matrix
 	for i := 0; i < matrixHeight; i++ {
 		scanner.Scan()
 		row := strings.Split(scanner.Text(), " ")
+		for j, token := range row {
+			if len(token) != 2 {
+				fmt.Printf("\033[31mterdapat token yang tidak terdiri dari 2 karakter pada posisi [%d, %d] : %s\n\033[0m", i, j, token)
+			}
+		}
 		mat = append(mat, row)
 	}
 
@@ -64,6 +69,10 @@ func readManualInput() {
 	tokens := make([]string, banyakTokenUnik)
 	for i := 0; i < banyakTokenUnik; i++ {
 		fmt.Scan(&tokens[i])
+		for len(tokens[i]) != 2 {
+			fmt.Print("\033[31mToken harus terdiri dari 2 karakter. Masukkan lagi: \033[0m")
+			fmt.Scan(&tokens[i])
+		}
 	}
 	fmt.Scanln() // untuk mengakhiri newline
 
@@ -142,8 +151,6 @@ func printAsciiArt() {
 }
 
 func mainInput() {
-
-	printAsciiArt()
 	// tanya kepada user apakah ingin menggunakan file input.txt atau tidak
 	fmt.Println("\033[34mApakah anda ingin menggunakan file input.txt? (y/n)\033[0m")
 	var input string
